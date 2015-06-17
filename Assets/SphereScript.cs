@@ -4,14 +4,18 @@ using System.Collections;
 public class SphereScript : MonoBehaviour {
 	
 	private float initial;
+	private GameObject _debugPointer;
 	// Use this for initialization
 	void Start () {
 		initial = this.transform.position.y;
+		_debugPointer = GameObject.FindGameObjectWithTag ("gazePointer");
+
 		SetGazedAt (false);
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		Debug.Log (_debugPointer.transform.position);
 		Bounce();
 		this.transform.Rotate (Vector3.up, Random.value * 2);
 		if (this.GetComponent<AudioSource> ().isPlaying) {

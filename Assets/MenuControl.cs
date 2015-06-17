@@ -4,6 +4,9 @@ using System.Collections;
 
 public class MenuControl : MonoBehaviour {
 
+	public CanvasGroup _mainCanvas;
+	public CanvasGroup _aboutCanvas;
+
 	// Use this for initialization
 	void Start () {
 		GameObject.FindGameObjectWithTag ("mainPiano").GetComponentInChildren<Text> ().text = "Piano";
@@ -16,24 +19,22 @@ public class MenuControl : MonoBehaviour {
 	// Initially hide the information panel
 	void HideAboutPanel()
 	{
-		GameObject.FindGameObjectWithTag ("mainPanel").GetComponent<CanvasGroup> ().alpha = 1f;
-		GameObject.FindGameObjectWithTag ("aboutPanel").GetComponent<CanvasGroup> ().alpha = 0f;
+		_mainCanvas.alpha = 1f;
+		_aboutCanvas.alpha = 0f;
 
-		GameObject.FindGameObjectWithTag ("aboutPanel").GetComponent<CanvasGroup> ().blocksRaycasts = false;
-		GameObject.FindGameObjectWithTag ("mainPanel").GetComponent<CanvasGroup> ().blocksRaycasts = true;
+		_aboutCanvas.blocksRaycasts = false;
+		_mainCanvas.blocksRaycasts = true;
 
 	}
 
 	// Show the 'About' panel
 	void ShowAboutPanel()
 	{
-		GameObject.FindGameObjectWithTag ("aboutPanel").GetComponent<CanvasGroup> ().alpha = 1f;
-		GameObject.FindGameObjectWithTag ("mainPanel").GetComponent<CanvasGroup> ().alpha = 0f;
+		_aboutCanvas.alpha = 1f;
+		_mainCanvas.alpha = 0f;
 
-		GameObject.FindGameObjectWithTag ("aboutPanel").GetComponent<CanvasGroup> ().blocksRaycasts = true;
-		GameObject.FindGameObjectWithTag ("mainPanel").GetComponent<CanvasGroup> ().blocksRaycasts = false;
-
-
+		_aboutCanvas.blocksRaycasts = true;
+		_mainCanvas.blocksRaycasts = false;
 	}
 
 	// Update is called once per frame
